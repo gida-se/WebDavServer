@@ -86,7 +86,7 @@ namespace FubarDev.WebDavServer
             }
         }
 
-        private T ParseHeader<T>(string name, Func<IReadOnlyCollection<string>, T> createFunc, T defaultValue = default(T))
+        private T ParseHeader<T>(string name, Func<IReadOnlyCollection<string>, T> createFunc, T defaultValue = default)
         {
             IReadOnlyCollection<string> v;
             if (Headers.TryGetValue(name, out v))
