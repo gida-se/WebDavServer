@@ -86,7 +86,8 @@ namespace FubarDev.WebDavServer
             }
         }
 
-        private T ParseHeader<T>(string name, Func<IReadOnlyCollection<string>, T> createFunc, T defaultValue = default)
+#pragma warning disable
+        private T ParseHeader<T>(string name, Func<IReadOnlyCollection<string>, T> createFunc, T defaultValue = default(T))
         {
             IReadOnlyCollection<string> v;
             if (Headers.TryGetValue(name, out v))
@@ -99,5 +100,6 @@ namespace FubarDev.WebDavServer
 
             return defaultValue;
         }
+#pragma warning restore
     }
 }
