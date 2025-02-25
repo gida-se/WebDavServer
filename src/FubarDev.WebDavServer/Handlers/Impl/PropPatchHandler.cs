@@ -19,6 +19,7 @@ using FubarDev.WebDavServer.Props.Dead;
 using FubarDev.WebDavServer.Props.Live;
 using FubarDev.WebDavServer.Utils;
 using FubarDev.WebDavServer.Utils.AsyncStreams;
+using Lock = FubarDev.WebDavServer.Locking.Lock;
 
 namespace FubarDev.WebDavServer.Handlers.Impl
 {

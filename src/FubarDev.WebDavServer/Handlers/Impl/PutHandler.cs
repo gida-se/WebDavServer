@@ -17,6 +17,7 @@ using FubarDev.WebDavServer.Model.Headers;
 using FubarDev.WebDavServer.Props;
 using FubarDev.WebDavServer.Utils;
 using Microsoft.Extensions.Logging;
+using Lock = FubarDev.WebDavServer.Locking.Lock;
 
 namespace FubarDev.WebDavServer.Handlers.Impl
 {

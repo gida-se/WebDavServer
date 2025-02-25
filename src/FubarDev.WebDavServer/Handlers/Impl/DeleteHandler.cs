@@ -14,6 +14,7 @@ using FubarDev.WebDavServer.Locking;
 using FubarDev.WebDavServer.Model;
 using FubarDev.WebDavServer.Model.Headers;
 using FubarDev.WebDavServer.Utils;
+using Lock = FubarDev.WebDavServer.Locking.Lock;
 
 namespace FubarDev.WebDavServer.Handlers.Impl
 {
