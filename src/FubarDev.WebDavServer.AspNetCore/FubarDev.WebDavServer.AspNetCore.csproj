@@ -5,13 +5,14 @@
         <NoWarn>CS8602;CS8632</NoWarn>
 
         <!-- For nuget -->
-        <Version>1.0.1</Version>
+        <Version>1.0.2</Version>
         <PackageId>Gida.FubarDev.WebDavServer.AspNetCore</PackageId>
         <IncludeSymbols>true</IncludeSymbols>
         <IncludeSource>true</IncludeSource>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeReferencedProjects>true</IncludeReferencedProjects>
+        <BuildOutputTargetFolder>lib</BuildOutputTargetFolder>
     </PropertyGroup>
 
     <ItemGroup>
