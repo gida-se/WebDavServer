@@ -5,14 +5,14 @@
         <NoWarn>CS8602;CS8632</NoWarn>
 
         <!-- For nuget -->
-        <Version>1.0.2</Version>
+        <Version>1.0.6</Version>
         <PackageId>Gida.FubarDev.WebDavServer.AspNetCore</PackageId>
         <IncludeSymbols>true</IncludeSymbols>
         <IncludeSource>true</IncludeSource>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <IncludeReferencedProjects>true</IncludeReferencedProjects>
-        <BuildOutputTargetFolder>lib</BuildOutputTargetFolder>
+
+        <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,9 +20,18 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\FubarDev.WebDavServer\FubarDev.WebDavServer.csproj"/>
+        <ProjectReference Include="..\FubarDev.WebDavServer\FubarDev.WebDavServer.csproj">
+            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+            <IncludeAssets>FubarDev.WebDavServer.dll</IncludeAssets>
+        </ProjectReference>
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Scrutor" Version="5.0.2"/>
     </ItemGroup>
+
+    <Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
+        <ItemGroup>
+            <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))"/>
+        </ItemGroup>
+    </Target>
 </Project>
