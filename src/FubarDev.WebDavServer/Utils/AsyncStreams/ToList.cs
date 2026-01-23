@@ -20,27 +20,27 @@ namespace FubarDev.WebDavServer.Utils.AsyncStreams
         /// <returns>An async-enumerable sequence containing a single element with a list containing all the elements of the source sequence.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
         /// <remarks>The return type of this operator differs from the corresponding operator on IEnumerable in order to retain asynchronous behavior.</remarks>
-        public static ValueTask<List<TSource>> ToListAsync<TSource>(this IAsyncEnumerable<TSource> source, CancellationToken cancellationToken = default)
-        {
-            if (source == null)
-                throw new ArgumentException(nameof(source));
-
-            if (source is IAsyncIListProvider<TSource> listProvider)
-                return listProvider.ToListAsync(cancellationToken);
-
-            return Core(source, cancellationToken);
-
-            static async ValueTask<List<TSource>> Core(IAsyncEnumerable<TSource> source, CancellationToken cancellationToken)
-            {
-                var list = new List<TSource>();
-
-                await foreach (var item in source.WithCancellation(cancellationToken).ConfigureAwait(false))
-                {
-                    list.Add(item);
-                }
-
-                return list;
-            }
-        }
+        // public static ValueTask<List<TSource>> ToListAsync<TSource>(this IAsyncEnumerable<TSource> source, CancellationToken cancellationToken = default)
+        // {
+        //     if (source == null)
+        //         throw new ArgumentException(nameof(source));
+        //
+        //     if (source is IAsyncIListProvider<TSource> listProvider)
+        //         return listProvider.ToListAsync(cancellationToken);
+        //
+        //     return Core(source, cancellationToken);
+        //
+        //     static async ValueTask<List<TSource>> Core(IAsyncEnumerable<TSource> source, CancellationToken cancellationToken)
+        //     {
+        //         var list = new List<TSource>();
+        //
+        //         await foreach (var item in source.WithCancellation(cancellationToken).ConfigureAwait(false))
+        //         {
+        //             list.Add(item);
+        //         }
+        //
+        //         return list;
+        //     }
+        // }
     }
 }

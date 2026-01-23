@@ -25,23 +25,23 @@ namespace FubarDev.WebDavServer.Utils.AsyncStreams
         /// <param name="source">The async-enumerable sequence that contains the elements to be filtered.</param>
         /// <returns>An async-enumerable sequence that contains elements from the input sequence of type TResult.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
-        public static IAsyncEnumerable<TResult> OfType<TResult>(this IAsyncEnumerable<object> source)
-        {
-            if (source == null)
-                throw Error.ArgumentNull(nameof(source));
-
-            return Create(Core);
-
-            async IAsyncEnumerator<TResult> Core(CancellationToken cancellationToken)
-            {
-                await foreach (var obj in source.WithCancellation(cancellationToken).ConfigureAwait(false))
-                {
-                    if (obj is TResult result)
-                    {
-                        yield return result;
-                    }
-                }
-            }
-        }
+        // public static IAsyncEnumerable<TResult> OfType<TResult>(this IAsyncEnumerable<object> source)
+        // {
+        //     if (source == null)
+        //         throw Error.ArgumentNull(nameof(source));
+        //
+        //     return Create(Core);
+        //
+        //     async IAsyncEnumerator<TResult> Core(CancellationToken cancellationToken)
+        //     {
+        //         await foreach (var obj in source.WithCancellation(cancellationToken).ConfigureAwait(false))
+        //         {
+        //             if (obj is TResult result)
+        //             {
+        //                 yield return result;
+        //             }
+        //         }
+        //     }
+        // }
     }
 }

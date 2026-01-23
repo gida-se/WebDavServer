@@ -19,21 +19,21 @@ namespace FubarDev.WebDavServer.Utils.AsyncStreams
         /// <param name="predicate">A function to test each source element for a condition.</param>
         /// <returns>An async-enumerable sequence that contains elements from the input sequence that satisfy the condition.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="predicate"/> is null.</exception>
-        public static IAsyncEnumerable<TSource> Where<TSource>(this IAsyncEnumerable<TSource> source, Func<TSource, bool> predicate)
-        {
-            if (source == null)
-                throw Error.ArgumentNull(nameof(source));
-            if (predicate == null)
-                throw Error.ArgumentNull(nameof(predicate));
-
-            if (source is AsyncIteratorBase<TSource> iterator)
-            {
-                return iterator.Where(predicate);
-            }
-
-            // TODO: Can we add array/list optimizations here, does it make sense?
-            return new WhereEnumerableAsyncIterator<TSource>(source, predicate);
-        }
+        // public static IAsyncEnumerable<TSource> Where<TSource>(this IAsyncEnumerable<TSource> source, Func<TSource, bool> predicate)
+        // {
+        //     if (source == null)
+        //         throw Error.ArgumentNull(nameof(source));
+        //     if (predicate == null)
+        //         throw Error.ArgumentNull(nameof(predicate));
+        //
+        //     if (source is AsyncIteratorBase<TSource> iterator)
+        //     {
+        //         return iterator.Where(predicate);
+        //     }
+        //
+        //     // TODO: Can we add array/list optimizations here, does it make sense?
+        //     return new WhereEnumerableAsyncIterator<TSource>(source, predicate);
+        // }
 
         /// <summary>
         /// Filters the elements of an async-enumerable sequence based on a predicate by incorporating the element's index.
